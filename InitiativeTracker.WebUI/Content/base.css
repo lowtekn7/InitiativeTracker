@@ -1,0 +1,61 @@
+body {
+  padding-top: 60px;
+  background-color: #eee;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+/*
+===================================
+Div tables
+===================================
+*/
+
+.div-table {
+  display: table;
+}
+
+.div-row {
+  display: table-row;
+}
+
+.div-header {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+
+}
+
+.div-cell {
+  display: table-cell;
+  padding: 2px 5px;
+  vertical-align: middle;
+}
+
+/*
+======================================
+Number Imput Field Size
+======================================
+*/
+.sm-input-number {
+  width: 70px;
+}
+
+/*
+======================================
+Alignment
+======================================
+*/
+
+.center {
+  text-align: center;
+}
+
+.align-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}

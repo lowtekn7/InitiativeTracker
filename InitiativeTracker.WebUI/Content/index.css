@@ -1,0 +1,69 @@
+body {
+  background-color: #222;
+}
+
+/*
+=================================
+Combat Character
+=================================
+*/
+
+.combat-character .row.btn-primary, .combat-character .row.btn-danger {
+  padding: 5px 5px;
+  margin-top:3px;
+  border-radius: 4px;
+}
+
+.combat-character .row {
+  padding: 0px 5px;
+}
+
+.character-name > h3 {
+  margin-top: 5px;
+}
+
+.initiative-score h1 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.hit-points {
+  font-size: 16px;
+  margin-top: 10px;
+  border-bottom: solid white 1px;
+}
+
+#round-tracker {
+  text-align: center;
+  color: #ccc;
+}
+
+#hpAmount {
+  width: 60px;
+}
+
+#character-list div {
+  text-align: left;
+}
+
+.characterLink {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+/*
+==============================================
+Toggle glyphicon checkbox for character selection
+==============================================
+*/
+
+input[type='checkbox']+label .unchecked{display:inline}
+input[type='checkbox']+label .checked{display:none}
+input[type='checkbox']:checked+label .unchecked{display:none}
+input[type='checkbox']:checked+label .checked{display:inline}
+
+input[type='radio']+label .unchecked{display:inline}
+input[type='radio']+label .checked{display:none}
+input[type='radio']:checked+label .unchecked{display:none}
+input[type='radio']:checked+label .checked{display:inline}
