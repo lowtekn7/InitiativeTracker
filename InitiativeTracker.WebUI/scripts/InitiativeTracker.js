@@ -4,7 +4,8 @@
             name: ko.observable(""),
             group: ko.observable("")
         },
-        displaySummary: ko.observable(true)
+        displaySummary: ko.observable(true),
+        displayEncounter: ko.observable(false)
     };
 
 function sendAjaxRequest(httpMethod, callback, url, reqData) {
@@ -63,6 +64,10 @@ function cancelNewCharacter() {
     model.editor.name = "";
     model.editor.group = "";
     model.displaySummary(true);
+}
+
+function addToEncounter() {
+    console.log("yo");
 }
 
 $(document).ready(function () {

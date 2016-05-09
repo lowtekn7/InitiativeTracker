@@ -14,6 +14,10 @@
     <div id='round-tracker'></div>
 
     <!-- Characters will be inserted here for display -->
-    <div id="character-container">
+    <div data-bind="if: model.displayEncounter">
+        @Html.Partial("encounter")
+    </div>
 
+    <div data-bind="ifnot: model.displayEncounter">
+        @Html.Partial("setupEncounter");
     </div>
