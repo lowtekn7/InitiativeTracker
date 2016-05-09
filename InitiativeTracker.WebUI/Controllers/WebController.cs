@@ -12,9 +12,10 @@ namespace InitiativeTracker.WebUI.Controllers
 {
     public class WebController : ApiController
     {
-        //private ICharacterRepository repo;
 
-        private EFCharacterRepository repo = new EFCharacterRepository();
+        //private EFCharacterRepository repo = new EFCharacterRepository();
+
+        private CharacterDAL repo = new CharacterDAL();
         
         public IEnumerable<Character> GetAllCharacters()
         {

@@ -13,12 +13,10 @@ namespace InitiativeTracker.WebUI.Controllers
     public class HomeController : Controller
     {
         private ICharacterRepository repository;
-        private VSEncounterList list;
         
         public HomeController(ICharacterRepository characterRepository)
         {
             this.repository = characterRepository;
-            this.list = new VSEncounterList();
         }
 
         public ActionResult Index(List<Character> list)
