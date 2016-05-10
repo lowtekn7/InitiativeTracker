@@ -47,19 +47,19 @@ function updateCharacter(item) {
 }
 
 function saveNewCharacter() {
-    console.log("Saving character...",model.editor);
     sendAjaxRequest("POST", function (newItem) {
         getAllItems();
-        model.displaySummary(true);
+        resetEditor();
     }, null, {
         CharacterID: model.editor.characterID,
         Name: model.editor.name,
         Initiative: 10,
         Group: model.editor.group
     });
+    
 }
 
-function cancelNewCharacter() {
+function resetEditor() {
     model.editor.characterID = "";
     model.editor.name = "";
     model.editor.group = "";
