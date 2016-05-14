@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Http;
 
 using InitiativeTracker.Domain.Abstract;
 using InitiativeTracker.Domain.Concrete;
@@ -14,9 +15,11 @@ namespace InitiativeTracker.WebUI.Controllers
     {
         private ICharacterRepository repository;
         
+        
         public HomeController(ICharacterRepository characterRepository)
         {
             this.repository = characterRepository;
+            
         }
 
         public ActionResult Index(List<Character> list)
@@ -26,6 +29,7 @@ namespace InitiativeTracker.WebUI.Controllers
 
         public ViewResult Characters()
         {
+            
             return View();
         }
 
