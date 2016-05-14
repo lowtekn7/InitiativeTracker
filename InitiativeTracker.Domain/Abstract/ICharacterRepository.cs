@@ -14,6 +14,6 @@ namespace InitiativeTracker.Domain.Abstract
         Character Save(Character item);
         Character Get(int id);
         void Remove(int id);
-        bool Update(Character item);
+        Character Update(Character item, int id);
     }
 }

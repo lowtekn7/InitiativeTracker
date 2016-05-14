@@ -54,7 +54,7 @@ namespace InitiativeTracker.Domain.Concrete
             }
         }
 
-        public bool Update(Character item)
+        public Character Update(Character item, int id)
         {
             Character storedItem = Get(item.CharacterID);
             if (storedItem != null)
@@ -62,12 +62,9 @@ namespace InitiativeTracker.Domain.Concrete
                 storedItem.Name = item.Name;
                 storedItem.Group = item.Group;
                 storedItem.Initiative = item.Initiative;
-                return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return item;
         }
     }
 }

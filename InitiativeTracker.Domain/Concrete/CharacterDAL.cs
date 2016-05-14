@@ -107,7 +107,7 @@ namespace InitiativeTracker.Domain.Concrete
 
         }
 
-        public bool Update(Character item)
+        public Character Update(Character item, int id)
         {
             throw new NotImplementedException();
         }

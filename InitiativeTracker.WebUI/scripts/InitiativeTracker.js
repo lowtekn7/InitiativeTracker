@@ -1,9 +1,22 @@
-﻿var database = (function () {
+﻿var model = {
+        characters: ko.observableArray(),
+        editor: {
+            name: ko.observable(""),
+            group: ko.observable("")
+        },
+        displaySummary: ko.observable(true),
+        displayEncounter: ko.observable(false),
+        encounter: {
+            characters: ko.observableArray()
+        }
+    };
+
+var database = (function () {
     function sendAjaxRequest(httpMethod, callback, url, reqData) {
         $.ajax("/api/web" + (url ? "/" + url : ""), {
             type: httpMethod, success: callback, data: reqData
         });
-    }
+    };
 
     return {
         getAllItems: function () {
@@ -16,13 +29,7 @@
         },
         removeItem: function (item) {
             sendAjaxRequest("DELETE", function () {
-                for (var i = 0; i < model.characters().length; i++) {
-                    if (model.characters()[i].CharacterID == item.CharacterID) {
-                        console.log(model.characters()[i], item);
-                        model.characters.remove(model.characters()[i]);
-                        break;
-                    }
-                }
+                removeFromArray(model.characters, item);
             }, item.CharacterID);
         },
         saveCharacter: function () {
@@ -39,20 +46,49 @@
     };
 })();
 
-var model = {
-        characters: ko.observableArray(),
-        editor: {
-            name: ko.observable(""),
-            group: ko.observable("")
-        },
-        displaySummary: ko.observable(true),
-        displayEncounter: ko.observable(false),
-        encounter: {
-            characters: ko.observableArray()
+function removeFromArray(array, item) {
+    for (var i = 0; i < array().length; i++) {
+        if (array()[i].CharacterID == item.CharacterID) {
+            array.remove(array()[i]);
+            break;
         }
+    }
+}
+
+var session = (function () {
+    function sendAjaxRequest(httpMethod, callback, url, reqData) {
+        $.ajax("/api/session" + (url ? "/" + url : ""), {
+            type: httpMethod, success: callback, data: reqData
+        });
     };
 
-
+    return {
+        getAllItems: function () {
+            sendAjaxRequest("GET", function (data) {
+                model.encounter.characters.removeAll();
+                for (var i = 0; i < data.length; i++) {
+                    model.characters.push(data[i]);
+                }
+            });
+        },
+        removeItem: function (item) {
+            sendAjaxRequest("DELETE", function () {
+                removeFromArray(model.encounter.characters, item);
+            }, item.CharacterID);
+        },
+        saveCharacter: function () {
+            sendAjaxRequest("POST", function (newItem) {
+                session.getAllItems();
+                resetEditor();
+            }, null, {
+                CharacterID: model.editor.characterID,
+                Name: model.editor.name,
+                Initiative: 10,
+                Group: model.editor.group
+            });
+        }
+    };
+})();
 
 function Create() {
     model.displaySummary(false);
@@ -65,8 +101,6 @@ function updateCharacter(item) {
     model.displaySummary(false);
 }
 
-
-
 function resetEditor() {
     model.editor.characterID = "";
     model.editor.name = "";
@@ -74,9 +108,6 @@ function resetEditor() {
     model.displaySummary(true);
 }
 
-function addToEncounter() {
-    console.log("yo");
-}
 
 $(document).ready(function () {
     console.log(database);

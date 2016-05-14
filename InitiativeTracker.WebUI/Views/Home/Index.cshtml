@@ -15,7 +15,7 @@
 
     <!-- Characters will be inserted here for display -->
     <div data-bind="if: model.displayEncounter">
-        @Html.Partial("encounter")
+        @Html.Partial("encounter", Model)
     </div>
 
     <div data-bind="ifnot: model.displayEncounter">
