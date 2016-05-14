@@ -57,7 +57,7 @@ function removeFromArray(array, item) {
 
 var session = (function () {
     function sendAjaxRequest(httpMethod, callback, url, reqData) {
-        $.ajax("/api/session" + (url ? "/" + url : ""), {
+        $.ajax("/api/Encounter" + (url ? "/" + url : ""), {
             type: httpMethod, success: callback, data: reqData
         });
     };
@@ -76,15 +76,14 @@ var session = (function () {
                 removeFromArray(model.encounter.characters, item);
             }, item.CharacterID);
         },
-        saveCharacter: function () {
+        saveItem: function (item) {
             sendAjaxRequest("POST", function (newItem) {
                 session.getAllItems();
-                resetEditor();
             }, null, {
-                CharacterID: model.editor.characterID,
-                Name: model.editor.name,
-                Initiative: 10,
-                Group: model.editor.group
+                CharacterID: item.characterID,
+                Name: item.Name,
+                Initiative: item.Initiative,
+                Group: item.Group
             });
         }
     };

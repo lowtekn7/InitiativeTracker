@@ -4,19 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-using InitiativeTracker.Domain.Abstract;
-using InitiativeTracker.Domain.Entities;
 using InitiativeTracker.Domain.Concrete;
+using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.WebUI.Controllers
 {
-    public class WebController : ApiController
+    public class EncounterController : ApiController
     {
+        private EncounterDAL repo = new EncounterDAL();
 
-        private EFCharacterRepository repo = new EFCharacterRepository();
-
-        //private CharacterDAL repo = new CharacterDAL();
-        
         public IEnumerable<Character> GetAllCharacters()
         {
             return repo.Characters;
@@ -34,9 +30,9 @@ namespace InitiativeTracker.WebUI.Controllers
         }
 
         [HttpPut]
-        public Character UpdateCharacter(Character item)
+        public Character UpdateCharacter(Character item, int id)
         {
-            return repo.Save(item);
+            return repo.Update(item, id);
         }
 
         [HttpDelete]
@@ -44,6 +40,5 @@ namespace InitiativeTracker.WebUI.Controllers
         {
             repo.Remove(id);
         }
-
     }
 }
