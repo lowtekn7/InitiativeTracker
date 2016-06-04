@@ -2,48 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
 using System.Web.Http;
 
 using InitiativeTracker.Domain.Abstract;
 using InitiativeTracker.Domain.Entities;
 using InitiativeTracker.Domain.Concrete;
 
-namespace InitiativeTracker.WebUI.Controllers
+namespace InitiativeTracker.WebUI.Controllers.REST
 {
-    public class WebController : ApiController
+    public class CharacterController : ApiController
     {
+        private EFCharacterRepository characters = new EFCharacterRepository();
 
-        private EFCharacterRepository repo = new EFCharacterRepository();
-
-        //private CharacterDAL repo = new CharacterDAL();
-        
+        [HttpGet]
         public IEnumerable<Character> GetAllCharacters()
         {
-            return repo.Characters;
+            return characters.Characters;
         }
+
 
         public Character GetCharacter(int id)
         {
-            return repo.Get(id);
+            return characters.Get(id);
         }
 
         [HttpPost]
         public Character CreateCharacter(Character item)
         {
-            return repo.Save(item);
+            return characters.Save(item);
         }
 
         [HttpPut]
         public Character UpdateCharacter(Character item)
         {
-            return repo.Save(item);
+            return characters.Save(item);
         }
 
         [HttpDelete]
+        [ActionName("Delete")]
         public void DeleteCharacter(int id)
         {
-            repo.Remove(id);
+            characters.Remove(id);
         }
-
     }
 }

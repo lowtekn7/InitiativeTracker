@@ -27,17 +27,6 @@ namespace InitiativeTracker.WebUI.Controllers
             return View(repository.Characters);
         }
 
-        public ViewResult Characters()
-        {
-            
-            return View();
-        }
-
-        public ViewResult Administration()
-        {
-            return View();
-        }
-
 
 
     }

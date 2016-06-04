@@ -2,46 +2,56 @@
         characters: ko.observableArray(),
         editor: {
             name: ko.observable(""),
-            group: ko.observable("")
+            initiative_bonus: ko.observable("")
         },
         displaySummary: ko.observable(true),
         displayEncounter: ko.observable(false),
         encounter: {
             characters: ko.observableArray()
-        }
+        },
+        availableGroups: ko.observableArray(),
+        selectedGroup: ko.observable()
     };
 
 var database = (function () {
     function sendAjaxRequest(httpMethod, callback, url, reqData) {
-        $.ajax("/api/web" + (url ? "/" + url : ""), {
+        $.ajax("/api" + (url ? "/" + url : ""), {
             type: httpMethod, success: callback, data: reqData
         });
     };
 
     return {
-        getAllItems: function () {
+        getAllCharacters: function () {
             sendAjaxRequest("GET", function (data) {
                 model.characters.removeAll();
                 for (var i = 0; i < data.length; i++) {
                     model.characters.push(data[i]);
                 }
-            });
+            }, "Character");
         },
         removeItem: function (item) {
             sendAjaxRequest("DELETE", function () {
                 removeFromArray(model.characters, item);
-            }, item.CharacterID);
+            }, "Character/Delete/" + item.CharacterID);
         },
         saveCharacter: function () {
             sendAjaxRequest("POST", function (newItem) {
-                database.getAllItems();
+                database.getAllCharacters();
                 resetEditor();
-            }, null, {
+            }, "Character", {
                 CharacterID: model.editor.characterID,
                 Name: model.editor.name,
-                Initiative: 10,
-                Group: model.editor.group
+                Initiative_Bonus: model.editor.initiative_bonus,
+                Group_ID: model.selectedGroup().Group_ID
             });
+        },
+        getGroups: function () {
+            sendAjaxRequest("GET", function (data) {
+                model.availableGroups.removeAll();
+                for (var i = 0; i < data.length; i++) {
+                    model.availableGroups.push(data[i]);
+                }
+            }, "Group")
         }
     };
 })();
@@ -96,20 +106,21 @@ function Create() {
 function updateCharacter(item) {
     model.editor.characterID = item.CharacterID;
     model.editor.name = item.Name;
-    model.editor.group = item.Group;
+    model.editor.initiative_bonus = item.Initiative_Bonus;
+    model.selectedGroup(model.availableGroups().find(x => x.Group_ID === item.Group_ID));
     model.displaySummary(false);
 }
 
 function resetEditor() {
     model.editor.characterID = "";
     model.editor.name = "";
-    model.editor.group = "";
+    model.editor.initiative_bonus = "";
     model.displaySummary(true);
 }
 
 
 $(document).ready(function () {
-    console.log(database);
-    database.getAllItems();
+    database.getAllCharacters();
+    database.getGroups();
     ko.applyBindings(model);
 });

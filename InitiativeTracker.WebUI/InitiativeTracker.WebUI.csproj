@@ -196,16 +196,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Characters.cshtml" />
-    <Content Include="Views\Home\Administration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\REST\CharacterController.cs" />
+    <Compile Include="Controllers\CharactersController.cs" />
     <Compile Include="Controllers\EncounterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WebController.cs" />
+    <Compile Include="Controllers\REST\GroupController.cs" />
+    <Compile Include="Controllers\REST\WebController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,10 +221,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Home\summary.cshtml" />
-    <Content Include="Views\Home\editor.cshtml" />
+    <Content Include="Views\Shared\summary.cshtml" />
+    <Content Include="Views\Shared\editor.cshtml" />
     <Content Include="Views\Home\encounter.cshtml" />
     <Content Include="Views\Home\setupEncounter.cshtml" />
+    <Content Include="Views\Characters\Index.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\Administration\Groups.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,6 +238,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Character\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InitiativeTracker.Domain\InitiativeTracker.Domain.csproj">

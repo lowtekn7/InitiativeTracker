@@ -10,7 +10,15 @@
         </div>
         <div class="form-group">
             <label>Group</label>
-            <input class="form-control" data-bind="value: model.editor.group" />
+            <select class="form-control" data-bind="options: availableGroups,
+                                                    optionsText: 'Name',
+                                                    value: selectedGroup">
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Initiative Bonus</label>
+            <input class="form-control" data-bind="value: model.editor.initiative_bonus"/>
         </div>
         <button class="btn btn-primary"
                 data-bind="click: database.saveCharacter">

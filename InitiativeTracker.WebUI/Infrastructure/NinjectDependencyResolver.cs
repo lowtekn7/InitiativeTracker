@@ -32,8 +32,9 @@ namespace InitiativeTracker.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            //kernel.Bind<ICharacterRepository>().To<EFCharacterRepository>();
-            kernel.Bind<ICharacterRepository>().To<CharacterDAL>();
+            kernel.Bind<ICharacterRepository>().To<EFCharacterRepository>();
+            kernel.Bind<ICharacterGroupRepository>().To<EFCharacterGroupRepository>();
+            //kernel.Bind<ICharacterRepository>().To<CharacterDAL>();
         }
     }
 }

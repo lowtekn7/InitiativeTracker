@@ -7,7 +7,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/base.css" rel="stylesheet" type="text/css"/>
-    <link href="~/Content/index.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="~/Content/index.css" rel="stylesheet" type="text/css"/>-->
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -24,9 +24,9 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home","Index")</li>
-                    <li>@Html.ActionLink("Characters", "Characters")</li>
-                    <li>@Html.ActionLink("Administration","Administration")</li>
+                    <li>@Html.ActionLink("Home","Index","Home")</li>
+                    <li>@Html.ActionLink("Characters", "Index","Characters")</li>
+                    <li>@Html.ActionLink("Administration","Index","Administration")</li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

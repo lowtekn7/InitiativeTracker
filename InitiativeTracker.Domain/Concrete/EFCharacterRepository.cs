@@ -32,8 +32,9 @@ namespace InitiativeTracker.Domain.Concrete
             {
                 
                 storedItem.Name = item.Name;
-                storedItem.Group = item.Group;
+                storedItem.Group_ID = item.Group_ID;
                 storedItem.Initiative = item.Initiative;
+                storedItem.Initiative_Bonus = item.Initiative_Bonus;
             }
             else
             {
@@ -60,8 +61,9 @@ namespace InitiativeTracker.Domain.Concrete
             if (storedItem != null)
             {
                 storedItem.Name = item.Name;
-                storedItem.Group = item.Group;
+                storedItem.Group_ID = item.Group_ID;
                 storedItem.Initiative = item.Initiative;
+                storedItem.Initiative_Bonus = item.Initiative_Bonus;
             }
 
             return item;

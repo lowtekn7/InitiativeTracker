@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace InitiativeTracker.Domain.Entities
 {
-    public class Character
+    public class CharacterGroup
     {
-        public int CharacterID { get; set; }
-        public string Name { get; set; }
-        public int? Initiative { get; set; }
+        [Key]
         public int Group_ID { get; set; }
-        public int? Initiative_Bonus { get; set; }
+        public string Name { get; set; }
     }
-
 }

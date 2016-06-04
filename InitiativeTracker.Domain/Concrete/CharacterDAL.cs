@@ -43,7 +43,7 @@ namespace InitiativeTracker.Domain.Concrete
                             CharacterID = (int)dr["CharacterID"],
                             Name = (string)dr["Name"],
                             Initiative = (int)dr["Initiative"],
-                            Group = (string)dr["Group"]
+                            Group_ID = (int)dr["Group_ID"]
                         });
                     }
                     dr.Close();
@@ -69,7 +69,7 @@ namespace InitiativeTracker.Domain.Concrete
                     character.CharacterID = (int)dr["CharacterID"];
                     character.Name = (string)dr["Name"];
                     character.Initiative = (int)dr["Initiative"];
-                    character.Group = (string)dr["Group"];
+                    character.Group_ID = (int)dr["Group"];
                 }
                 dr.Close();
             }
@@ -94,12 +94,12 @@ namespace InitiativeTracker.Domain.Concrete
             string sql;
             if (storedCharacter.CharacterID != 0)
             {
-                sql = string.Format("UPDATE Characters SET Name='{0}', Initiative='{1}', [Group]='{2}' WHERE CharacterID='{3}'",
-                    item.Name, item.Initiative, item.Group, item.CharacterID);
+                sql = string.Format("UPDATE Characters SET Name='{0}', Initiative='{1}', [Group_ID]='{2}' WHERE CharacterID='{3}'",
+                    item.Name, item.Initiative, item.Group_ID, item.CharacterID);
             } else
             {
-                sql = string.Format("INSERT INTO Characters (Name,Initiative,[Group]) Values ('{0}','{1}','{2}')",
-                item.Name, item.Initiative, item.Group);
+                sql = string.Format("INSERT INTO Characters (Name,Initiative,[Group_ID]) Values ('{0}','{1}','{2}')",
+                item.Name, item.Initiative, item.Group_ID);
             }
             
             using (SqlCommand cmd = new SqlCommand(sql, this.sqlCn)) { cmd.ExecuteNonQuery(); }
