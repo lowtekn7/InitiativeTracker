@@ -25,6 +25,8 @@ var database = (function () {
             sendAjaxRequest("GET", function (data) {
                 model.characters.removeAll();
                 for (var i = 0; i < data.length; i++) {
+                    data[i].group = (model.availableGroups().find(x => x.Group_ID === data[i].Group_ID)).Name;
+                    console.log((model.availableGroups().find(x => x.Group_ID === data[i].Group_ID)).Name);
                     model.characters.push(data[i]);
                 }
             }, "Character");
@@ -45,12 +47,13 @@ var database = (function () {
                 Group_ID: model.selectedGroup().Group_ID
             });
         },
-        getGroups: function () {
+        setupCharacters: function () {
             sendAjaxRequest("GET", function (data) {
                 model.availableGroups.removeAll();
                 for (var i = 0; i < data.length; i++) {
                     model.availableGroups.push(data[i]);
-                }
+                };
+                database.getAllCharacters();
             }, "Group")
         }
     };
@@ -120,7 +123,6 @@ function resetEditor() {
 
 
 $(document).ready(function () {
-    database.getAllCharacters();
-    database.getGroups();
+    database.setupCharacters();
     ko.applyBindings(model);
 });
