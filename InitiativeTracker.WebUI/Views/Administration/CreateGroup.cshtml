@@ -1,0 +1,23 @@
+﻿@using InitiativeTracker.Domain.Entities
+@model CharacterGroup
+
+@{
+    ViewBag.Title = "CreateGroup";
+}
+
+<div class="section panel panel-primary">
+    <div class="panel-heading">Create Group</div>
+        @using (Html.BeginForm("Save", "Group"))
+        {
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Group Name</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete="off" })
+                </div>
+
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Groups", "Administration", new { @class = "btn btn-default" })
+            </div>
+        }
+            
+</div>

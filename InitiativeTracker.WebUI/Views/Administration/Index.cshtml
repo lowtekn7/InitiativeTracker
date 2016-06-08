@@ -6,17 +6,12 @@
 
 <div class="section panel panel-primary">
     <div class="panel-heading">Administration</div>
-    <ul>
-        <li>
-            Manage
-            <ul>
-                <li>@Html.ActionLink("Groups","Groups")</li>
-                <li>Encounters</li>
-            </ul>
-        </li>
-
-    </ul>
-
+    <div class="panel-body">
+        <div class="list-group">
+            @Html.ActionLink("Groups", "Groups", null, new { @class = "list-group-item" })
+        </div>
     </div>
+
+
 </div>
 

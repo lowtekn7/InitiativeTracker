@@ -54,19 +54,5 @@ namespace InitiativeTracker.Domain.Concrete
                 context.SaveChanges();
             }
         }
-
-        public Character Update(Character item, int id)
-        {
-            Character storedItem = Get(item.CharacterID);
-            if (storedItem != null)
-            {
-                storedItem.Name = item.Name;
-                storedItem.Group_ID = item.Group_ID;
-                storedItem.Initiative = item.Initiative;
-                storedItem.Initiative_Bonus = item.Initiative_Bonus;
-            }
-
-            return item;
-        }
     }
 }

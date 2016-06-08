@@ -1,0 +1,25 @@
+﻿@model InitiativeTracker.Domain.Entities.CharacterGroup
+
+@{
+    ViewBag.Title = "EditGroup";
+}
+
+<div class="section panel panel-primary">
+    <div class="panel-heading">Edit Group</div>
+
+
+    @using (Html.BeginForm("Save", "Group"))
+    {
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.HiddenFor(x => x.Group_ID)
+                <label>Group Name</label>
+                @Html.TextBoxFor(x => x.Name, new { @Value = Model.Name, @class = "form-control", autocomplete="off" })
+            </div>
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+            @Html.ActionLink("Cancel", "Groups", "Administration", new { @class = "btn btn-default" })
+        </div>
+    }
+
+</div>

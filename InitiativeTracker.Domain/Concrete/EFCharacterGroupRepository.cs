@@ -50,16 +50,5 @@ namespace InitiativeTracker.Domain.Concrete
             context.SaveChanges();
             return item;
         }
-
-        public CharacterGroup Update(CharacterGroup item, int id)
-        {
-            CharacterGroup storedItem = Get(item.Group_ID);
-            if (storedItem != null)
-            {
-                storedItem.Name = item.Name;
-            }
-
-            return item;
-        }
     }
 }

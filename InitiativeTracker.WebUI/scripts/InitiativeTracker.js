@@ -29,7 +29,7 @@ var database = (function () {
                     console.log((model.availableGroups().find(x => x.Group_ID === data[i].Group_ID)).Name);
                     model.characters.push(data[i]);
                 }
-            }, "Character");
+            }, "Character/Characters");
         },
         removeItem: function (item) {
             sendAjaxRequest("DELETE", function () {
@@ -45,7 +45,7 @@ var database = (function () {
                 Name: model.editor.name,
                 Initiative_Bonus: model.editor.initiative_bonus,
                 Group_ID: model.selectedGroup().Group_ID
-            });
+            }, "Character/Delete");
         },
         setupCharacters: function () {
             sendAjaxRequest("GET", function (data) {
@@ -54,7 +54,7 @@ var database = (function () {
                     model.availableGroups.push(data[i]);
                 };
                 database.getAllCharacters();
-            }, "Group")
+            }, "Character/Groups")
         }
     };
 })();

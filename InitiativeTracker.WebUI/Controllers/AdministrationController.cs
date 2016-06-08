@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 using InitiativeTracker.Domain.Abstract;
+using InitiativeTracker.Domain.Concrete;
+using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.WebUI.Controllers
 {
@@ -20,12 +22,24 @@ namespace InitiativeTracker.WebUI.Controllers
         // GET: Administration
         public ActionResult Index()
         {
+
             return View();
         }
 
-        public ActionResult Groups()
+        public ViewResult Groups()
         {
             return View(repository.Groups);
+        }
+
+        public ViewResult CreateGroup()
+        {
+            return View();
+        }
+
+        public ViewResult EditGroup(int id)
+        {
+            CharacterGroup group = repository.Get(id);
+            return View(group);
         }
 
     }

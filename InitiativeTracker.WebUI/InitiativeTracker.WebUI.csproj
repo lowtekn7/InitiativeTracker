@@ -206,8 +206,7 @@
     <Compile Include="Controllers\CharactersController.cs" />
     <Compile Include="Controllers\EncounterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\REST\GroupController.cs" />
-    <Compile Include="Controllers\REST\WebController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +227,8 @@
     <Content Include="Views\Characters\Index.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\Groups.cshtml" />
+    <Content Include="Views\Administration\CreateGroup.cshtml" />
+    <Content Include="Views\Administration\EditGroup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

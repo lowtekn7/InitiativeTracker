@@ -13,7 +13,6 @@ namespace InitiativeTracker.Domain.Abstract
         IEnumerable<CharacterGroup> Groups { get; }
         CharacterGroup Save(CharacterGroup item);
         CharacterGroup Get(int id);
-        CharacterGroup Update(CharacterGroup item, int id);
         void Remove(int id);
     }
 }
