@@ -26,7 +26,6 @@ var database = (function () {
                 model.characters.removeAll();
                 for (var i = 0; i < data.length; i++) {
                     data[i].group = (model.availableGroups().find(x => x.Group_ID === data[i].Group_ID)).Name;
-                    console.log((model.availableGroups().find(x => x.Group_ID === data[i].Group_ID)).Name);
                     model.characters.push(data[i]);
                 }
             }, "Character/Characters");
@@ -40,12 +39,12 @@ var database = (function () {
             sendAjaxRequest("POST", function (newItem) {
                 database.getAllCharacters();
                 resetEditor();
-            }, "Character", {
+            }, "Character/Create", {
                 CharacterID: model.editor.characterID,
                 Name: model.editor.name,
                 Initiative_Bonus: model.editor.initiative_bonus,
                 Group_ID: model.selectedGroup().Group_ID
-            }, "Character/Delete");
+            });
         },
         setupCharacters: function () {
             sendAjaxRequest("GET", function (data) {
@@ -123,6 +122,6 @@ function resetEditor() {
 
 
 $(document).ready(function () {
-    database.setupCharacters();
+    //database.setupCharacters();
     ko.applyBindings(model);
 });

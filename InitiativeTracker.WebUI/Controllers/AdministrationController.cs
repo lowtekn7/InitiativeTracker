@@ -19,7 +19,6 @@ namespace InitiativeTracker.WebUI.Controllers
             this.repository = repo;
         }
 
-        // GET: Administration
         public ActionResult Index()
         {
 

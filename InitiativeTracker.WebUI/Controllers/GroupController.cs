@@ -12,17 +12,23 @@ namespace InitiativeTracker.WebUI.Controllers.REST
 {
     public class GroupController : Controller
     {
-        private EFCharacterGroupRepository groups = new EFCharacterGroupRepository();
+        private ICharacterGroupRepository repository;
+        //private EFCharacterGroupRepository groups = new EFCharacterGroupRepository();
+
+        public GroupController(ICharacterGroupRepository repo)
+        {
+            this.repository = repo;
+        }
 
         public ActionResult Save(CharacterGroup item)
         {
-            groups.Save(item);
+            repository.Save(item);
             return RedirectToAction("Groups", "Administration");
         }
 
         public ActionResult Delete(int id)
         {
-            groups.Remove(id);
+            repository.Remove(id);
             return RedirectToAction("Groups", "Administration");
         }
     }

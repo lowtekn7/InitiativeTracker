@@ -9,9 +9,9 @@ namespace InitiativeTracker.Domain.Entities
     public class Character
     {
         public int CharacterID { get; set; }
+        public int Group_ID { get; set; }
         public string Name { get; set; }
         public int? Initiative { get; set; }
-        public int Group_ID { get; set; }
         public int? Initiative_Bonus { get; set; }
     }
 

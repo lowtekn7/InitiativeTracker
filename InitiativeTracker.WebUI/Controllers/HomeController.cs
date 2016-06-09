@@ -19,7 +19,6 @@ namespace InitiativeTracker.WebUI.Controllers
         {
             
             this.repository = characterRepository;
-            
         }
 
         public ActionResult Index(List<Character> list)
