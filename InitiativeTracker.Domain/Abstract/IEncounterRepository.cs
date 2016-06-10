@@ -8,7 +8,7 @@ using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.Domain.Abstract
 {
-    public interface ICharacterGroupRepository : IDefaultInterface<CharacterGroup>
+    public interface IEncounterRepository : IDefaultInterface<Encounter>
     {
         
     }

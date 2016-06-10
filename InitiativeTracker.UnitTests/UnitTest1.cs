@@ -21,7 +21,7 @@ namespace InitiativeTracker.UnitTests
 
 
             //Act
-            List<Character> Characters = characters.Characters.ToList();
+            List<Character> Characters = characters.items.ToList();
             int length = Characters.Count;
             
 

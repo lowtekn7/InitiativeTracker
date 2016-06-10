@@ -34,6 +34,7 @@ namespace InitiativeTracker.WebUI.Infrastructure
         {
             kernel.Bind<ICharacterRepository>().To<EFCharacterRepository>();
             kernel.Bind<ICharacterGroupRepository>().To<EFCharacterGroupRepository>();
+            kernel.Bind<IEncounterRepository>().To<EFEncounterRepository>();
             //kernel.Bind<ICharacterRepository>().To<CharacterDAL>();
         }
     }

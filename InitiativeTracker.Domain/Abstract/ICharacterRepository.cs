@@ -8,11 +8,8 @@ using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.Domain.Abstract
 {
-    public interface ICharacterRepository
+    public interface ICharacterRepository : IDefaultInterface<Character>
     {
-        IEnumerable<Character> Characters { get; }
-        Character Save(Character item);
-        Character Get(int id);
-        void Remove(int id);
+        
     }
 }

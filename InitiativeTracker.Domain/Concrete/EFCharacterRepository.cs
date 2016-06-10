@@ -14,7 +14,7 @@ namespace InitiativeTracker.Domain.Concrete
     {
         private EFdbContext context = new EFdbContext();
 
-        public IEnumerable<Character> Characters
+        public IEnumerable<Character> items
         {
             get { return context.Characters; }
         }

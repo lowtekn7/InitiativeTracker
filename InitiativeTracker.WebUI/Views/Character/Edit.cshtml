@@ -1,0 +1,30 @@
+﻿@model InitiativeTracker.WebUI.Models.CreateCharacterViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="section panel panel-primary">
+    <div class="panel-heading">Edit Character</div>
+    @using (Html.BeginForm("Save", "Character"))
+    {
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.HiddenFor(x => x.CharacterID)
+                <label>Character Name</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
+            </div>
+            <div class="form-group">
+                <label>Group</label>
+                @Html.DropDownListFor(x => x.Group_ID, Model.GetGroups, new { @class = "form-control" } )
+            </div>
+            <div class="form-group">
+                <label>Initiative Bonus</label>
+                @Html.EditorFor(x => x.Initiative_Bonus,
+                                new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            </div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            @Html.ActionLink("Cancel", "Cancel", "Character", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

@@ -23,7 +23,7 @@ namespace InitiativeTracker.WebUI.Controllers
 
         public ActionResult Index(List<Character> list)
         {
-            return View(repository.Characters);
+            return View(repository.items);
         }
 
 

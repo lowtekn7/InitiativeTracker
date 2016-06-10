@@ -4,48 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using InitiativeTracker.Domain.Entities;
 using InitiativeTracker.Domain.Abstract;
+using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.Domain.Concrete
 {
-    public class EFCharacterGroupRepository : ICharacterGroupRepository
+    public class EFEncounterRepository : IEncounterRepository
     {
         private EFdbContext context = new EFdbContext();
 
-        public IEnumerable<CharacterGroup> items
+        public IEnumerable<Encounter> items
         {
-                get { return context.CharacterGroup; }
+            get
+            {
+                return context.Encounters;
+            }
         }
 
-        public CharacterGroup Get(int id)
+        public Encounter Get(int id)
         {
-            return context.CharacterGroup.Where(c => c.Group_ID == id).FirstOrDefault();
+            return context.Encounters.Where(x => x.Encounter_ID == id).FirstOrDefault();
         }
 
         public void Remove(int id)
         {
-            CharacterGroup item = Get(id);
+            Encounter item = Get(id);
             if (item != null)
             {
-                context.CharacterGroup.Remove(item);
+                context.Encounters.Remove(item);
                 context.SaveChanges();
             }
         }
 
-        public CharacterGroup Save(CharacterGroup item)
+        public Encounter Save(Encounter item)
         {
-            CharacterGroup storedItem = Get(item.Group_ID);
+            Encounter storedItem = Get(item.Encounter_ID);
 
             if (storedItem != null)
             {
-
                 storedItem.Name = item.Name;
             }
             else
             {
-
-                context.CharacterGroup.Add(item);
+                context.Encounters.Add(item);
             }
             context.SaveChanges();
             return item;

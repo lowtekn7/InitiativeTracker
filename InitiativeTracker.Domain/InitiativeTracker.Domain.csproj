@@ -84,13 +84,15 @@
   <ItemGroup>
     <Compile Include="Abstract\ICharacterGroupRepository.cs" />
     <Compile Include="Abstract\ICharacterRepository.cs" />
-    <Compile Include="Concrete\CharacterDAL.cs" />
+    <Compile Include="Abstract\IDefaultInterface.cs" />
+    <Compile Include="Abstract\IEncounterRepository.cs" />
     <Compile Include="Concrete\EFCharacterGroupRepository.cs" />
     <Compile Include="Concrete\EFCharacterRepository.cs" />
     <Compile Include="Concrete\EFdbContext.cs" />
-    <Compile Include="Concrete\EncounterDAL.cs" />
+    <Compile Include="Concrete\EFEncounterRepository.cs" />
     <Compile Include="Entities\Character.cs" />
     <Compile Include="Entities\CharacterGroup.cs" />
+    <Compile Include="Entities\Encounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

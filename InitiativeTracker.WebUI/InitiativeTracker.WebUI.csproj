@@ -203,7 +203,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CharacterController.cs" />
-    <Compile Include="Controllers\CharactersController.cs" />
     <Compile Include="Controllers\EncounterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -224,13 +223,15 @@
     <Content Include="scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Home\encounter.cshtml" />
     <Content Include="Views\Home\setupEncounter.cshtml" />
-    <Content Include="Views\Characters\Index.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\Groups.cshtml" />
     <Content Include="Views\Administration\CreateGroup.cshtml" />
     <Content Include="Views\Administration\EditGroup.cshtml" />
     <Content Include="Views\Character\Summary.cshtml" />
     <Content Include="Views\Character\Create.cshtml" />
+    <Content Include="Views\Character\Edit.cshtml" />
+    <Content Include="Views\Encounter\Summary.cshtml" />
+    <Content Include="Views\Encounter\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -241,7 +242,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InitiativeTracker.Domain\InitiativeTracker.Domain.csproj">

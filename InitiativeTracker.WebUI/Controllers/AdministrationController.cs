@@ -27,7 +27,7 @@ namespace InitiativeTracker.WebUI.Controllers
 
         public ViewResult Groups()
         {
-            return View(repository.Groups);
+            return View(repository.items);
         }
 
         public ViewResult CreateGroup()

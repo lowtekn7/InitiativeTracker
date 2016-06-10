@@ -11,7 +11,6 @@ namespace InitiativeTracker.WebUI.Models
 {
     public class CreateCharacterViewModel : Character
     {
-        public IEnumerable<CharacterGroup> groups { get; set; }
         public IEnumerable<SelectListItem> GetGroups { get; set; }
     }
 }

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using InitiativeTracker.Domain.Entities;
-
 namespace InitiativeTracker.Domain.Abstract
 {
-    public interface ICharacterGroupRepository : IDefaultInterface<CharacterGroup>
+    public interface IDefaultInterface<T>
     {
-        
+        IEnumerable<T> items { get; }
+        T Get(int id);
+        T Save(T item);
+        void Remove(int id);
     }
 }

@@ -2,43 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
+using System.Web.Mvc;
 
+using InitiativeTracker.Domain.Abstract;
 using InitiativeTracker.Domain.Concrete;
 using InitiativeTracker.Domain.Entities;
 
 namespace InitiativeTracker.WebUI.Controllers
 {
-    public class EncounterController : ApiController
+    public class EncounterController : Controller
     {
-        private EncounterDAL repo = new EncounterDAL();
+        private IEncounterRepository repository;
 
-        public IEnumerable<Character> GetAllCharacters()
+        public EncounterController(IEncounterRepository repo)
         {
-            return repo.Characters;
+            this.repository = repo;
         }
 
-        public Character GetCharacter(int id)
+        public ViewResult Summary()
         {
-            return repo.Get(id);
+            return View(repository.items);
         }
 
-        [HttpPost]
-        public Character CreateCharacter(Character item)
+        public ViewResult Create()
         {
-            return repo.Save(item);
-        }
-
-        [HttpPut]
-        public Character UpdateCharacter(Character item, int id)
-        {
-            return repo.Update(item, id);
-        }
-
-        [HttpDelete]
-        public void DeleteCharacter(int id)
-        {
-            repo.Remove(id);
+            return View();
         }
     }
 }
