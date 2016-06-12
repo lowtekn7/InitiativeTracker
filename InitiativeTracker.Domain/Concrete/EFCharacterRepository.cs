@@ -21,12 +21,12 @@ namespace InitiativeTracker.Domain.Concrete
 
         public Character Get(int id)
         {
-            return context.Characters.Where(c => c.CharacterID == id).FirstOrDefault();
+            return context.Characters.Where(c => c.Character_ID == id).FirstOrDefault();
         }
 
         public Character Save(Character item)
         {
-            Character storedItem = Get(item.CharacterID);
+            Character storedItem = Get(item.Character_ID);
             
             if (storedItem != null)
             {

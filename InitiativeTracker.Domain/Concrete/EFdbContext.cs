@@ -14,6 +14,7 @@ namespace InitiativeTracker.Domain.Concrete
         public DbSet<Character> Characters { get; set; }
         public DbSet<CharacterGroup> CharacterGroup { get; set; }
         public DbSet<Encounter> Encounters { get; set; }
+        public DbSet<EncounterCharacter> ECL { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -165,6 +165,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\characters.css" />
+    <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -189,6 +190,8 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-2.2.3.js" />
     <Content Include="scripts\jquery-2.2.3.min.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="scripts\knockout-3.4.0.debug.js" />
     <Content Include="scripts\knockout-3.4.0.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
@@ -209,9 +212,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\SelectedCharacterBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\SharedMethods.cs" />
     <Compile Include="Models\CharacterViewModel.cs" />
     <Compile Include="Models\CreateCharacterViewModel.cs" />
+    <Compile Include="Models\EncounterCharacterViewModel.cs" />
+    <Compile Include="Models\SelectedCharacters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +239,9 @@
     <Content Include="Views\Character\Edit.cshtml" />
     <Content Include="Views\Encounter\Summary.cshtml" />
     <Content Include="Views\Encounter\Create.cshtml" />
+    <Content Include="Views\Encounter\_characterSelectionList.cshtml" />
+    <Content Include="Views\Encounter\_selectedCharacters.cshtml" />
+    <Content Include="Views\Encounter\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

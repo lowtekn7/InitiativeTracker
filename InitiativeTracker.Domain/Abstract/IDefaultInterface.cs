@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InitiativeTracker.Domain.Abstract
 {
-    public interface IDefaultInterface<T>
+    public interface IDefaultRepository<T>
     {
         IEnumerable<T> items { get; }
         T Get(int id);

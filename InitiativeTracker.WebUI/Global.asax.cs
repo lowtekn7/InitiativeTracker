@@ -8,6 +8,10 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 
+using InitiativeTracker.Domain.Entities;
+using InitiativeTracker.WebUI.Models;
+using InitiativeTracker.WebUI.Infrastructure.Binders;
+
 namespace InitiativeTracker.WebUI
 {
     public class Global : HttpApplication
@@ -17,7 +21,9 @@ namespace InitiativeTracker.WebUI
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ModelBinders.Binders.Add(typeof(SelectedCharacters), new SelectedCharacterBinder());
         }
     }
 }

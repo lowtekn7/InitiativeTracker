@@ -16,18 +16,7 @@ namespace InitiativeTracker.UnitTests
         [TestMethod]
         public void GetAllCharacters()
         {
-            //Arrange
-            EFCharacterRepository characters = new EFCharacterRepository();
 
-
-            //Act
-            List<Character> Characters = characters.items.ToList();
-            int length = Characters.Count;
-            
-
-            //Assert
-            //Assert.IsNotNull(item);
-            Assert.AreEqual(2,length);
         }
     }
 }

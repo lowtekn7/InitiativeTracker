@@ -93,6 +93,7 @@
     <Compile Include="Entities\Character.cs" />
     <Compile Include="Entities\CharacterGroup.cs" />
     <Compile Include="Entities\Encounter.cs" />
+    <Compile Include="Entities\EncounterCharacter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

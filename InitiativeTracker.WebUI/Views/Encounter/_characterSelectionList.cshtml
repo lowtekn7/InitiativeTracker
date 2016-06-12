@@ -1,0 +1,15 @@
+﻿@using InitiativeTracker.WebUI.Models
+@model IEnumerable<CharacterViewModel>
+
+<div class="list-group">
+    @foreach (CharacterViewModel item in Model)
+    {
+        @Ajax.ActionLink(@item.Name + " | " + @item.Group, "AddTo", "Encounter", new { id = item.Character_ID },
+       new AjaxOptions {
+           HttpMethod = "POST",
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "selectedCharacterList"
+       },
+       new { @class = "list-group-item"})
+    }
+</div>

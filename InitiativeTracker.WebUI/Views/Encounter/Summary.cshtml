@@ -10,13 +10,18 @@
     <div class="panel-body">
         <table class="table table-striped table-condensed">
             <thead>
-                <tr><th>Name</th></tr>
+                <tr><th>Name</th><th></th></tr>
             </thead>
             <tbody>
                 @foreach(Encounter item in Model)
                 {
                     <tr>
-                        <td>@item.Name</td>
+                        <td>
+                            @Html.ActionLink(@item.Name,"Edit", new { id = @item.Encounter_ID })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Remove", "Delete", new { id = @item.Encounter_ID }, new { @class = "btn btn-xs btn-default" })
+                        </td>
                     </tr>
                 }
             </tbody>

@@ -14,5 +14,6 @@ namespace InitiativeTracker.WebUI.Models
         public string Group { get; set; }
         public int? Initiative { get; set; }
         public int? Initiative_Bonus { get; set; }
+        public int? EncounterCharacter_ID { get; set; }
     }
 }
