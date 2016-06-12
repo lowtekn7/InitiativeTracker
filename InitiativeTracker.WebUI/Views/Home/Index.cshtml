@@ -1,23 +1,19 @@
 ﻿@using InitiativeTracker.Domain.Entities
-@model IEnumerable<Character>
+@model IEnumerable<Encounter>
 
 @{
     ViewBag.Title = "Index";
 }
 
-    <div class="row">
-        <button id="add-characters" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Manage Encounter</button>
-        <button id="roll-initiative" class="btn btn-primary pull-right">Roll Initiative</button>
-    </div>
-    <hr>
-    <!-- # of Rounds will be updated here -->
-    <div id='round-tracker'></div>
-
-    <!-- Characters will be inserted here for display -->
-    <div data-bind="if: model.displayEncounter">
-        @Html.Partial("encounter", Model)
-    </div>
-
-    <div data-bind="ifnot: model.displayEncounter">
-        @Html.Partial("setupEncounter");
+    <div class="section panel panel-primary">
+        <div class="panel-heading">Select an Encounter to Load</div>
+        <div class="panel-body">
+            <div class="list-group">
+                @foreach (Encounter item in Model)
+                {
+                    @Html.ActionLink(@item.Name, "Start", new { id = item.Encounter_ID }, 
+                        new { @class = "list-group-item" })
+                }
+            </div>
+        </div>
     </div>

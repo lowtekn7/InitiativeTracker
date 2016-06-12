@@ -10,5 +10,8 @@ namespace InitiativeTracker.WebUI.Models
     public class EncounterCharacterViewModel : EncounterCharacter
     {
         public string Name { get; set; }
+        public int Initiative { get; set; }
+        public string Group { get; set; }
+        public int? Initiative_bonus { get; set; }
     }
 }

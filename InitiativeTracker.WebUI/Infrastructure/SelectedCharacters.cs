@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using InitiativeTracker.WebUI.Models;
 
-namespace InitiativeTracker.WebUI.Models
+namespace InitiativeTracker.WebUI.Infrastructure
 {
     public class SelectedCharacters
     {

@@ -1,4 +1,6 @@
-﻿var model = {
+﻿var Round = 0;
+
+var model = {
         characters: ko.observableArray(),
         editor: {
             name: ko.observable(""),
@@ -13,14 +15,29 @@
         selectedGroup: ko.observable()
     };
 
+var roundTracker = (function () {
+    return {
+        nextRound: function () {
+            console.log(Round);
+            Round++;
+            $("#roundTracker").text("Round: " + Round);
+        }
+    }
+})();
+
 var database = (function () {
     function sendAjaxRequest(httpMethod, callback, url, reqData) {
-        $.ajax("/api" + (url ? "/" + url : ""), {
+        $.ajax((url ? "/" + url : ""), {
             type: httpMethod, success: callback, data: reqData
         });
     };
 
     return {
+        getRound: function() {
+            sendAjaxRequest("GET", function (round) {
+                Round = round;
+            }, "Home/GetRound");
+        },
         getAllCharacters: function () {
             sendAjaxRequest("GET", function (data) {
                 model.characters.removeAll();
@@ -67,40 +84,6 @@ function removeFromArray(array, item) {
     }
 }
 
-var session = (function () {
-    function sendAjaxRequest(httpMethod, callback, url, reqData) {
-        $.ajax("/api/Encounter" + (url ? "/" + url : ""), {
-            type: httpMethod, success: callback, data: reqData
-        });
-    };
-
-    return {
-        getAllItems: function () {
-            sendAjaxRequest("GET", function (data) {
-                model.encounter.characters.removeAll();
-                for (var i = 0; i < data.length; i++) {
-                    model.characters.push(data[i]);
-                }
-            });
-        },
-        removeItem: function (item) {
-            sendAjaxRequest("DELETE", function () {
-                removeFromArray(model.encounter.characters, item);
-            }, item.CharacterID);
-        },
-        saveItem: function (item) {
-            sendAjaxRequest("POST", function (newItem) {
-                session.getAllItems();
-            }, null, {
-                CharacterID: item.characterID,
-                Name: item.Name,
-                Initiative: item.Initiative,
-                Group: item.Group
-            });
-        }
-    };
-})();
-
 function Create() {
     model.displaySummary(false);
 }
@@ -122,6 +105,9 @@ function resetEditor() {
 
 
 $(document).ready(function () {
+    database.getRound();
+    $("#nextRound").click(roundTracker.nextRound);
     //database.setupCharacters();
-    ko.applyBindings(model);
+    //ko.applyBindings(model);
 });
+

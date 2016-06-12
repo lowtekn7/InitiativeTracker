@@ -10,6 +10,7 @@ using System.Web.Http;
 
 using InitiativeTracker.Domain.Entities;
 using InitiativeTracker.WebUI.Models;
+using InitiativeTracker.WebUI.Infrastructure;
 using InitiativeTracker.WebUI.Infrastructure.Binders;
 
 namespace InitiativeTracker.WebUI
@@ -24,6 +25,7 @@ namespace InitiativeTracker.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ModelBinders.Binders.Add(typeof(SelectedCharacters), new SelectedCharacterBinder());
+            ModelBinders.Binders.Add(typeof(EncounterCharacters), new EncounterCharacterBinder());
         }
     }
 }

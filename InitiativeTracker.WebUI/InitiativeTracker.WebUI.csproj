@@ -212,13 +212,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\EncounterCharacterBinder.cs" />
     <Compile Include="Infrastructure\Binders\SelectedCharacterBinder.cs" />
+    <Compile Include="Infrastructure\EncounterCharacters.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\SelectedCharacters.cs" />
     <Compile Include="Infrastructure\SharedMethods.cs" />
     <Compile Include="Models\CharacterViewModel.cs" />
     <Compile Include="Models\CreateCharacterViewModel.cs" />
     <Compile Include="Models\EncounterCharacterViewModel.cs" />
-    <Compile Include="Models\SelectedCharacters.cs" />
+    <Compile Include="Models\EncounterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -228,8 +231,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Home\encounter.cshtml" />
-    <Content Include="Views\Home\setupEncounter.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\Groups.cshtml" />
     <Content Include="Views\Administration\CreateGroup.cshtml" />
@@ -242,6 +243,8 @@
     <Content Include="Views\Encounter\_characterSelectionList.cshtml" />
     <Content Include="Views\Encounter\_selectedCharacters.cshtml" />
     <Content Include="Views\Encounter\Edit.cshtml" />
+    <Content Include="Views\Home\Start.cshtml" />
+    <Content Include="Views\Home\_encounterList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
