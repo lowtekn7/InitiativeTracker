@@ -1,0 +1,45 @@
+﻿@using InitiativeTracker.Domain.Entities;
+@model Encounter
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="section panel panel-primary">
+    <div class="panel-heading">Create Encounter</div>
+    @using (Html.BeginForm("Save", "Encounter"))
+    {
+        <div class="panel-body">
+            <div class="col-xs-4">
+                @Html.HiddenFor(x => x.Encounter_ID)
+                <label>Encounter Name</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Add Characters
+                    </div>
+                    <div class="panel-body">
+                        @{Html.RenderAction("_characterSelectionList");}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-8">
+                <div id="selectedCharacters" class="panel panel-default">
+                    <div class="panel-heading">
+                        Selected Characters
+                    </div>
+                    <div class="panel-body">
+                        <div id="selectedCharacterList" class="list-group">
+                            @{ Html.RenderAction("SelectedCharacters");}
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Cancel", "Encounter", new { @class = "btn btn-default" })
+            </div>
+
+        </div>
+                                }
+</div>

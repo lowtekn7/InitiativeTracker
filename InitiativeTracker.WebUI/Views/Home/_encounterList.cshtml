@@ -1,0 +1,12 @@
+﻿@using InitiativeTracker.Domain.Entities
+@using InitiativeTracker.WebUI.Models
+@model IEnumerable<EncounterCharacterViewModel>
+
+@foreach (EncounterCharacterViewModel item in Model)
+{
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Group</td>
+        <td>@item.Initiative</td>
+    </tr>
+}
