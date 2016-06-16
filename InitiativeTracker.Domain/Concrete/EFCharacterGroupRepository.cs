@@ -12,6 +12,10 @@ namespace InitiativeTracker.Domain.Concrete
     public class EFCharacterGroupRepository : ICharacterGroupRepository
     {
         private EFdbContext context = new EFdbContext();
+        private IEnumerable<Character> characters {
+            get { return context.Characters; }
+        }
+
 
         public IEnumerable<CharacterGroup> items
         {
@@ -23,13 +27,22 @@ namespace InitiativeTracker.Domain.Concrete
             return context.CharacterGroup.Where(c => c.Group_ID == id).FirstOrDefault();
         }
 
-        public void Remove(int id)
+        public string Remove(int id)
         {
             CharacterGroup item = Get(id);
-            if (item != null)
+            if (item != null && characters.Where(c => c.Group_ID == id).FirstOrDefault() == null)
             {
                 context.CharacterGroup.Remove(item);
                 context.SaveChanges();
+                return "Success";
+            } else
+            {
+                string error = "Could not delete group because the following characters are still assigned to this group:\r\n" + Environment.NewLine;
+                foreach (Character character in characters.Where(c => c.Group_ID == id))
+                {
+                    error += character.Name + Environment.NewLine;
+                }
+                return error;
             }
         }
 

@@ -11,6 +11,6 @@ namespace InitiativeTracker.Domain.Abstract
         IEnumerable<T> items { get; }
         T Get(int id);
         T Save(T item);
-        void Remove(int id);
+        string Remove(int id);
     }
 }

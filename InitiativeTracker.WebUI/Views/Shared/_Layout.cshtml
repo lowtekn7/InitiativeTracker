@@ -35,7 +35,12 @@
 
     <div id="wrapper" class="container">
         <br />
-
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Message"]
+            </div>
+        }
         @RenderBody()
     </div>
     

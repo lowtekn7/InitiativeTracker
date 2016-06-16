@@ -24,8 +24,9 @@ namespace InitiativeTracker.WebUI.Controllers.REST
             this.groups = groupRepo;
         }
 
-        public ViewResult Summary()
+        public ActionResult Summary(string result)
         {
+            ViewBag.Result = result;
             IEnumerable<CharacterViewModel> list = SharedMethods.ConvertIEToCharacterVM(
                 characters.items, groups.items);
             return View(list);
@@ -75,7 +76,8 @@ namespace InitiativeTracker.WebUI.Controllers.REST
 
         public ActionResult Delete(int id)
         {
-            characters.Remove(id);
+            string result = characters.Remove(id);
+            TempData["Message"] = string.Format("Error: {0}", result);
             return RedirectToAction("Summary");
         }
     }

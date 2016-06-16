@@ -28,7 +28,11 @@ namespace InitiativeTracker.WebUI.Controllers.REST
 
         public ActionResult Delete(int id)
         {
-            repository.Remove(id);
+            string result = repository.Remove(id);
+            if (result != "Success")
+            {
+                TempData["Message"] = string.Format("Error: {0}",result);
+            }
             return RedirectToAction("Groups", "Administration");
         }
     }

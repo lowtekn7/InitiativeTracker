@@ -20,19 +20,27 @@ namespace InitiativeTracker.Domain.Concrete
                 return context.Encounters;
             }
         }
+        private IEnumerable<EncounterCharacter> encounterCharacters
+        {
+            get { return context.ECL; }
+        }
 
         public Encounter Get(int id)
         {
             return context.Encounters.Where(x => x.Encounter_ID == id).FirstOrDefault();
         }
 
-        public void Remove(int id)
+        public string Remove(int id)
         {
             Encounter item = Get(id);
-            if (item != null)
+            if (item != null && encounterCharacters.Where(ecl => ecl.Encounter_ID == id) == null)
             {
                 context.Encounters.Remove(item);
                 context.SaveChanges();
+                return "Success";
+            } else
+            {
+                return "No rows to delete.";
             }
         }
 
@@ -75,13 +83,17 @@ namespace InitiativeTracker.Domain.Concrete
             return context.ECL.Where(x => x.EncounterCharacter_ID == id).FirstOrDefault();
         }
 
-        public void Remove(int id)
+        public string Remove(int id)
         {
             EncounterCharacter item = Get(id);
             if (item != null)
             {
                 context.ECL.Remove(item);
                 context.SaveChanges();
+                return "Success";
+            } else
+            {
+                return "No rows to delete";
             }
             
         }
